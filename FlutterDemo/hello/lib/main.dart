@@ -37,7 +37,8 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Main Page'),
+        title: Text('PlastGo'),
+        centerTitle: true,
       ),
       body: Column(
         children: [

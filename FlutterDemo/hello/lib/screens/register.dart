@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter/gestures.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,14 +17,17 @@ class MyApp extends StatelessWidget {
 
 class RegistrationForm extends StatefulWidget {
   @override
-  _RegistrationFormState createState() => _RegistrationFormState();
+  _RegistrationFormState createState() {
+    return _RegistrationFormState();
+  }
 }
 
 class _RegistrationFormState extends State<RegistrationForm> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController reconfirmPasswordController =TextEditingController();
+  final TextEditingController reconfirmPasswordController =
+      TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
 
   bool isSeller = false;
@@ -36,6 +36,13 @@ class _RegistrationFormState extends State<RegistrationForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+              'assets/background.jpg'), // Replace with your image asset
+          fit: BoxFit.cover,
+        ),
+      ),
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -45,26 +52,32 @@ class _RegistrationFormState extends State<RegistrationForm> {
               Text(
                 'PlastGo',
                 style: TextStyle(
-                  color: Colors.green,
-                  fontSize: 30.0,
+                  color: Colors.white60,
+                  fontSize: 60.0, // Increase font size
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Calligraphy',
+                  fontFamily:
+                      'Calligraphy', // Make sure to include your desired font
                 ),
               ),
-              SizedBox(height: 20.0),
-              _buildTextField('Name', nameController),
-              _buildTextField('Email', emailController),
-              _buildTextField('Password', passwordController),
-              _buildTextField('Reconfirm Password', reconfirmPasswordController),
-              _buildTextField('Phone Number', phoneNumberController),
-              SizedBox(height: 20.0),
+              SizedBox(height: 20.0), // Increased spacing
+              _buildTextField('Name', nameController, 40.0), // Decreased height
+              _buildTextField(
+                  'Email', emailController, 40.0), // Decreased height
+              _buildTextField(
+                  'Password', passwordController, 40.0), // Decreased height
+              _buildTextField('Confirm Password', reconfirmPasswordController,
+                  40.0), // Decreased height
+              _buildTextField('Phone Number', phoneNumberController,
+                  40.0), // Decreased height
+              SizedBox(height: 10.0),
               Row(
                 children: [
                   Text(
                     'Register as:',
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold, // Make the text bold
                     ),
                   ),
                   Checkbox(
@@ -74,8 +87,18 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         isSeller = value!;
                       });
                     },
+                    checkColor:
+                        Colors.white, // Change the color of the checkmark
+                    activeColor:
+                        Colors.white, // Change the color of the checkbox itself
                   ),
-                  Text('Seller'),
+                  Text(
+                    'Seller',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold, // Make the text bold
+                    ),
+                  ),
                   Checkbox(
                     value: isBuyer,
                     onChanged: (value) {
@@ -83,11 +106,21 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         isBuyer = value!;
                       });
                     },
+                    checkColor:
+                        Colors.white, // Change the color of the checkmark
+                    activeColor:
+                        Colors.white, // Change the color of the checkbox itself
                   ),
-                  Text('Buyer'),
+                  Text(
+                    'Buyer',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold, // Make the text bold
+                    ),
+                  ),
                 ],
               ),
-              SizedBox(height: 20.0),
+              SizedBox(height: 10.0),
               ElevatedButton(
                 onPressed: () {
                   // Add your registration logic here
@@ -101,19 +134,24 @@ class _RegistrationFormState extends State<RegistrationForm> {
     );
   }
 
-  Widget _buildTextField(String label, TextEditingController controller) {
+  Widget _buildTextField(
+      String label, TextEditingController controller, double height) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             label,
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.white, // White text color
+              fontWeight: FontWeight.bold, // Bold font weight
+              fontSize: 20.0, // Increased font size
             ),
           ),
-          SizedBox(width: 10.0),
-          Expanded(
+          SizedBox(height: 5.0),
+          SizedBox(
+            height: height, // Set the height of the text field
             child: TextField(
               controller: controller,
               decoration: InputDecoration(
