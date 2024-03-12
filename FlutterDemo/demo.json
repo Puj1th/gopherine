@@ -1,0 +1,90 @@
+{
+    "Login_Page": {
+      "POST /api/login": {
+        "Description": "Log in a user.",
+        "Parameters": {
+          "username": "User's email or username",
+          "password": "User's password"
+        },
+        "Returns": {
+          "Success": "200 OK",
+          "Failure": "401 Unauthorized"
+        }
+      },
+      "GET /api/logout": {
+        "Description": "Log out the currently authenticated user.",
+        "Returns": {
+          "Success": "200 OK",
+          "Failure": "401 Unauthorized"
+        }
+      }
+    },
+    "Registration_Page": {
+      "POST /api/register": {
+        "Description": "Register a new user.",
+        "Parameters": {
+          "name": "User's full name",
+          "email": "User's email",
+          "password": "User's password",
+          "reconfirm_password": "Reconfirmation of the password",
+          "phone_number": "User's phone number"
+        },
+        "Returns": {
+          "Success": "201 Created",
+          "Failure": "400 Bad Request"
+        }
+      }
+    },
+    "Seller_Page": {
+      "POST /api/seller/add": {
+        "Description": "Add a new plastic item for sale.",
+        "Parameters": {
+          "plastic_type": "Type of plastic",
+          "quantity": "Quantity of plastic",
+          "days_sustain": "Number of days plastic can sustain"
+        },
+        "Returns": {
+          "Success": "201 Created",
+          "Failure": "400 Bad Request"
+        }
+      }
+    },
+    "Buyer_Page": {
+      "POST /api/buyer/request": {
+        "Description": "Submit a request to buy plastic.",
+        "Parameters": {
+          "plastic_type": "Type of plastic",
+          "quantity": "Desired quantity of plastic",
+          "days_sustain": "Number of days plastic should sustain"
+        },
+        "Returns": {
+          "Success": "201 Created",
+          "Failure": "400 Bad Request"
+        }
+      },
+      "GET /api/buyer/requested_details": {
+        "Description": "Retrieve the details of requested plastic items.",
+        "Returns": {
+          "Success": "200 OK",
+          "Failure": "401 Unauthorized"
+        }
+      }
+    },
+    "Profile_Page": {
+      "GET /api/profile": {
+        "Description": "Retrieve user profile information.",
+        "Returns": {
+          "Success": "200 OK",
+          "Failure": "401 Unauthorized"
+        }
+      }
+    },
+    "Navigation_Page": {
+      "GET /api/navigation/options": {
+        "Description": "Retrieve navigation options for the user.",
+        "Returns": {
+          "Success": "200 OK"
+        }
+      }
+    }
+  }
